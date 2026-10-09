@@ -1,0 +1,348 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --pink: #ffb7d5;
+  --purple: #c9a7ff;
+  --deep-purple: #75438c;
+  --cream: #fff8fc;
+}
+
+body {
+  min-height: 100vh;
+  padding: 40px 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "DM Sans", sans-serif;
+  color: #573b61;
+  background:
+    radial-gradient(ellipse at 15% 15%, #512e71 0%, transparent 42%),
+    radial-gradient(ellipse at 90% 80%, #843f76 0%, transparent 40%),
+    linear-gradient(135deg, #170f2c, #30163d 55%, #171127);
+  overflow-x: hidden;
+  position: relative;
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(2px 2px at 70% 20%, #ffd7f1, transparent),
+    radial-gradient(2px 2px at 40% 80%, white, transparent),
+    radial-gradient(2px 2px at 85% 60%, #e8c7ff, transparent),
+    radial-gradient(2px 2px at 10% 75%, white, transparent);
+  background-size: 220px 220px;
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+.card {
+  width: 100%;
+  max-width: 620px;
+  position: relative;
+  z-index: 2;
+  padding: 40px 36px;
+  border: 1px solid rgba(255, 207, 237, 0.45);
+  border-radius: 28px;
+  text-align: center;
+  background: rgba(255, 248, 253, 0.96);
+  box-shadow:
+    0 0 25px rgba(255, 135, 213, 0.24),
+    0 0 70px rgba(192, 128, 255, 0.15);
+  animation: appear 1s ease both;
+}
+
+.top-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  color: #b16eaa;
+}
+
+.bouquet {
+  margin: 22px 0 12px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.bouquet span {
+  font-size: 45px;
+  display: inline-block;
+  filter: drop-shadow(0 0 12px #ff9dd5);
+  animation: flowerFloat 3s ease-in-out infinite;
+}
+
+.bouquet span:nth-child(2) {
+  animation-delay: 0.4s;
+  font-size: 55px;
+}
+
+.bouquet span:nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(40px, 8vw, 58px);
+  color: #8f4c96;
+  text-shadow: 0 0 20px #f5c6ee;
+  margin: 10px 0;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #a16d9f;
+}
+
+.divider {
+  color: #d78ac7;
+  margin: 25px 0;
+  letter-spacing: 8px;
+}
+
+.message {
+  font-size: 15px;
+  line-height: 1.95;
+  margin: 0 0 17px;
+  color: #634b68;
+}
+
+.message strong {
+  color: #b64f91;
+}
+
+.signature {
+  font-family: "Playfair Display", serif;
+  font-size: 19px;
+  line-height: 1.8;
+  margin: 26px 0;
+  color: #8c5794;
+}
+
+.signature span {
+  font-size: 15px;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 600;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+button {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 14px 12px;
+  border: 1px solid #edc1e5;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ffe3f1, #eee0ff);
+  color: #794d87;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 0 20px rgba(218, 126, 213, 0.45);
+  background: linear-gradient(135deg, #ffcce6, #dfc4ff);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+.secret-button {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #e6d5ff, #ffd7ed);
+}
+
+.surprise-box {
+  display: none;
+  position: relative;
+  margin-top: 25px;
+  padding: 26px 20px;
+  border: 1px solid #edc0e5;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #fff0f8, #f5edff);
+  box-shadow: 0 0 25px rgba(218, 126, 213, 0.22);
+  animation: appear 0.45s ease;
+  line-height: 1.9;
+}
+
+.surprise-box.show {
+  display: block;
+}
+
+.surprise-box h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 25px;
+  color: #a6539b;
+  margin-bottom: 12px;
+}
+
+.surprise-box p {
+  font-size: 14px;
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  font-size: 26px;
+  color: #aa70a9;
+  cursor: pointer;
+}
+
+.footer {
+  margin-top: 30px;
+  font-size: 11px;
+  line-height: 1.8;
+  color: #b08cb4;
+}
+
+.flower {
+  position: fixed;
+  z-index: 1;
+  font-size: 60px;
+  opacity: 0.8;
+  pointer-events: none;
+  filter: drop-shadow(0 0 15px #ff9bda);
+  animation: flowerFloat 5s ease-in-out infinite;
+}
+
+.flower-one {
+  top: 7%;
+  left: 5%;
+}
+
+.flower-two {
+  top: 15%;
+  right: 6%;
+  animation-delay: 1s;
+}
+
+.flower-three {
+  bottom: 9%;
+  left: 8%;
+  animation-delay: 2s;
+}
+
+.flower-four {
+  bottom: 6%;
+  right: 7%;
+  animation-delay: 0.6s;
+}
+
+.petal {
+  position: fixed;
+  z-index: 5;
+  pointer-events: none;
+  font-size: 22px;
+  animation: bloom 2.5s ease-out forwards;
+}
+
+@keyframes flowerFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(5deg);
+  }
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.45;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bloom {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.3) rotate(0deg);
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) scale(1.5) rotate(180deg);
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 22px 12px;
+  }
+
+  .card {
+    padding: 30px 19px;
+    border-radius: 23px;
+  }
+
+  .top-label {
+    letter-spacing: 2px;
+    font-size: 9px;
+  }
+
+  .message {
+    font-size: 14px;
+    line-height: 1.85;
+  }
+
+  .buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .secret-button {
+    grid-column: auto;
+  }
+
+  .flower {
+    font-size: 35px;
+  }
+
+  .bouquet span {
+    font-size: 35px;
+  }
+
+  .bouquet span:nth-child(2) {
+    font-size: 45px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
